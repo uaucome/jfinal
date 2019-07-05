@@ -1,4 +1,4 @@
-package com.yzp.jfinaltest.common;
+package com.yzp.jfinaltest.common.config;
 
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;

@@ -1,4 +1,4 @@
-package com.yzp.jfinaltest.common;
+package com.yzp.jfinaltest.common.utils;
 
 import javax.sql.DataSource;
 import com.jfinal.plugin.activerecord.generator.MetaBuilder;
