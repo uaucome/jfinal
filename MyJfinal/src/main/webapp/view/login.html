@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登陆</title>
+<!-- css -->
+<link rel="stylesheet" href="#(ctx)/common/css/reset.css">
+<link rel="stylesheet" href="#(ctx)/common/css/supersized.css">
+<link rel="stylesheet" href="#(ctx)/common/css/style.css">
+
+<!-- Javascript -->
+<script src="#(ctx)/common/js/jquery-1.8.2.min.js"></script>
+<script src="#(ctx)/common/js/supersized.3.2.7.min.js"></script>
+<script src="#(ctx)/common/js/supersized-init.js"></script>
+<script src="#(ctx)/common/js/scripts.js"></script>
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+<!-- 添加自己的样式和内容  -->
+<style type="text/css">
+	.pawlost {
+		padding-top: 26px;
+		font-size: 14px;	
+	}
+	
+	.pawlost a {
+		text-decoration:none;
+		color: white;
+		display:inline-block
+	}
+</style>
+
+<!-- 添加事件  -->
+<script type="text/javascript">
+	function pawLost() {
+		alert("忘记密码");
+	}
+	
+	function formSubmit() {
+		alert("登陆开始");
+	}
+</script>
+<body>
+	<div class="page-container">
+		<h1>登陆</h1>
+		<form action="" method="post">
+			<input type="text" name="username" class="username"placeholder="用户名"> 
+			<input type="password" name="password" class="password" placeholder="密码">
+			<button type="submit" value="sumbit" onclick="formSubmit(); ">确认</button>
+			<div class="error">
+				<span>+</span>
+			</div>
+		</form>
+		<div class="pawlost">
+        	<a href="javascript:void(0)" onclick="pawLost()">忘记密码? </a>
+        </div>
+	</div>
+</body>
+</html>
