@@ -6,14 +6,15 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.server.undertow.UndertowServer;
 import com.jfinal.template.Engine;
-import com.yzp.jfinaltest.controller.TestController;
-import com.yzp.jfinaltest.model._MappingKit;
+import com.yzp.jfinaltest.common.routes.AdminRoutes;
+import com.yzp.jfinaltest.common.routes.FrontRoutes;
 
 /**
  * Description: 配置文件
@@ -22,14 +23,14 @@ import com.yzp.jfinaltest.model._MappingKit;
  *
  * @date 2019年7月3日
  */
-public class TestConfig extends JFinalConfig {
+public class MyConfig extends JFinalConfig {
 	static Prop p;
 
 	/**
 	 * 启动入口，运行此 main 方法可以启动项目，此 main 方法可以放置在任意的 Class 类定义中，不一定要放于此
 	 */
 	public static void main(String[] args) {
-		UndertowServer.start(TestConfig.class);
+		UndertowServer.start(MyConfig.class);
 	}
 
 	/**
@@ -63,11 +64,12 @@ public class TestConfig extends JFinalConfig {
 	}
 
 	/**
-	 * 配置路由
+	 * 配置路由，设置了前端路由和后端路由
 	 */
 	@Override
 	public void configRoute(Routes me) {
-		me.add("/",TestController.class);
+		me.add(new FrontRoutes()); // 前端路由
+		me.add(new AdminRoutes()); // 后端路由
 	}
 
 	/**
@@ -81,7 +83,7 @@ public class TestConfig extends JFinalConfig {
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
 		arp.setShowSql(true);
 		// 所有映射在 MappingKit 中自动化搞定
-		_MappingKit.mapping(arp);
+		//_MappingKit.mapping(arp);
 		me.add(arp);
 		//启动druid
 		druidPlugin.start();
@@ -98,11 +100,12 @@ public class TestConfig extends JFinalConfig {
 
 	/**
 	 * 可以添加自定义的handler,handler对所有的web请求有着完全的控制权
+	 * 设置上下文路径放置样式丢失
 	 * 
 	 */
 	@Override
 	public void configHandler(Handlers me) {
-
+		me.add(new ContextPathHandler("ctx"));
 	}
 
 	/**

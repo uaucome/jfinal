@@ -10,7 +10,7 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.activerecord.generator.Generator;
 import com.jfinal.plugin.druid.DruidPlugin;
-import com.yzp.jfinaltest.common.MetaBuliderUtil;
+import com.yzp.jfinaltest.common.utils.MetaBuliderUtil;
 
 public class _JFinalGenerator {
 	
@@ -48,7 +48,7 @@ public class _JFinalGenerator {
 		MetaBuliderUtil metaBulider = new MetaBuliderUtil(getDataSource());
 
 		// 数据库表名包含字段（可以是数据库全名，否则所有包含字段的表都将生成）
-		metaBulider.setTablePrefix("ujfinal");
+		metaBulider.setTablePrefix("customer");
 
 		generator.setMetaBuilder(metaBulider);
 
@@ -66,7 +66,7 @@ public class _JFinalGenerator {
 
 		// 设置需要被移除的表名前缀用于生成modelName。例如表名 "osc_user"，移除前缀 "osc_"后生成的model名为 "User"而非
 		// OscUser
-		// generator.setRemovedTableNamePrefixes("t_");
+		generator.setRemovedTableNamePrefixes("t_");
 
 		// 生成
 		generator.generate();
