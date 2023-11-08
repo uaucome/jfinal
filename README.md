@@ -1,5 +1,4 @@
 # jfinal
-jfinal框架的简单尝试
 
 1. 该项目的运行环境为jdk1.8,tomcat8.5,mysql8.0,mvn3.5;
 
